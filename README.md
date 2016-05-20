@@ -2,6 +2,9 @@
 
 ### Attention: Currently this repository contains solely project configuration and couple of tests to ensure that the configuration on your workstation is correct. Additional code and presentation material will be added after Goldschmiede have took place.
 
+#### Presentation of the talk is located bellow
+
+![Spark @ Goldschmiede](https://github.com/goldschmiede/16-05-20-Spark-und-Hadoop/tree/master/src/main/resources/SparkAtGoldschmiede.pptx)
 
 To run tests, please do following:
 
