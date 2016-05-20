@@ -4,7 +4,7 @@
 
 #### Presentation of the talk is located bellow
 
-![Spark @ Goldschmiede](https://github.com/goldschmiede/16-05-20-Spark-und-Hadoop/tree/master/src/main/resources/SparkAtGoldschmiede.pptx)
+![Spark @ Goldschmiede](https://github.com/fahman/16-05-20-Spark-und-Hadoop/tree/master/src/main/resources/SparkAtGoldschmiede.pptx)
 
 To run tests, please do following:
 
