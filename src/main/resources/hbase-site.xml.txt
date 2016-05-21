@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+
+<!--
+/**
+ * Remove extension '.txt' from this file if you wan to enable access to hbase for your application.
+ * Based on your hadoop distribution and hbase version different settings might be needed.
+ */
+-->
+<configuration>
+
+    <property>
+        <name>hbase.rootdir</name>
+        <value>maprfs:///mapr/myroot/</value>
+    </property>
+
+    <property>
+        <name>hbase.cluster.distributed</name>
+        <value>true</value>
+    </property>
+
+    <property>
+        <name>hbase.zookeeper.quorum</name>
+        <value>path-to-one-or-more-hbase-node</value>
+    </property>
+
+    <property>
+        <name>hbase.zookeeper.property.clientPort</name>
+        <value>5181</value>
+    </property>
+
+    <property>
+        <name>dfs.support.append</name>
+        <value>true</value>
+    </property>
+
+    <property>
+        <name>hbase.fsutil.maprfs.impl</name>
+        <value>org.apache.hadoop.hbase.util.FSMapRUtils</value>
+    </property>
+
+    <property>
+        <name>hbase.regionserver.handler.count</name>
+        <value>30</value>
+        <!-- default is 25 -->
+    </property>
+
+    <!-- Allows file/db client to use 64 threads -->
+    <property>
+        <name>fs.mapr.threads</name>
+        <value>64</value>
+    </property>
+
+</configuration>
