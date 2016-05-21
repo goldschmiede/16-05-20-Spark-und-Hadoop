@@ -1,0 +1,54 @@
+/**
+ * I simply copied java map-reduce code into this text file.
+ * You can copy the text into a java project, but be advised that you will need appropriate dependency config.
+ */
+
+// mapper class
+public static class SampleMapper extends MapReduceBase implements Mapper<LongWritable, Text, Text, IntWritable> {
+    private final static IntWritable count = new IntWritable(1);
+    private Text text = new Text();
+    public void map(LongWritable key, Text value, OutputCollector<Text, IntWritable> output, Reporter reporter)
+            throws IOException {
+        String line = value.toString ();
+        StringTokenizer tokenizer = new StringTokenizer (line);
+        while (tokenizer.hasMoreTokens()) {
+            text.set(tokenizer.nextToken());
+            Output.collect(text, count);
+        }
+    }
+}
+
+// reducer
+public static class SampleReducer extends MapReduceBase implements Reducer<Text, IntWritable, Text, IntWritable> {
+public void reduce(Text key, Iterator<IntWritable> values, OutputCollector<Text, IntWritable> output,
+                Reporter reporter) throws IOException {
+            int sum = 0;
+            while (values.hasNext()) {
+                sum += values.next().get();
+            }
+            output.collect(key, new IntWritable(sum));
+        }
+    }
+
+// here is the 'driver' located in, this builds the map-reduce job end to end
+public static void main(String[] args) throws Exception {
+        String inputPath=args[0];
+        String outputPath=args[1];
+        JobConf conf = new JobConf(SampleMapReduce.class);
+        conf.setJobName("SampleMapReduce");
+
+        conf.setOutputKeyClass(Text.class);
+        conf.setOutputValueClass(IntWritable.class);
+
+        conf.setMapperClass(SampleMapper.class);
+        conf.setCombinerClass(SampleReducer.class);
+        conf.setReducerClass(SampleReducer.class);
+
+        conf.setInputFormat(TextInputFormat.class);
+        conf.setOutputFormat(TextOutputFormat.class);
+
+        FileInputFormat.setInputPaths(conf, new Path(inputPath));
+        FileOutputFormat.setOutputPath(conf, new Path(outputPath));
+
+        JobClient.runJob(conf);
+}

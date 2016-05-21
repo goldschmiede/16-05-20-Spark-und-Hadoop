@@ -1,7 +1,16 @@
 # Welcome to repository of the talk on Apache Spark (and Hadoop) @ [Goldschmiede](http://www.anderscore.com/partner/goldschmiede/)
 
-### Attention: Currently this repository contains solely project configuration and couple of tests to ensure that the configuration on your workstation is correct. Additional code and presentation material will be added after Goldschmiede have took place.
+Thank you all for coming, participating and, to some of you, for drinking a beer with me afterwards. It was great evening
+and a lot of very interesting discussions. I learned a lot!
 
+MfG
+reinis
+
+#### Presentation of the talk
+
+Click -> ![Spark @ Goldschmiede](SparkAtGoldschmiede.pdf)
+
+#### Playing with code examples
 
 To run tests, please do following:
 
@@ -21,3 +30,7 @@ sbt update test
 ```
 
 If tests complete successfully, you're all set.
+
+#### Final words
+
+Code and additional resources are extensively commented, if there are still questions or you would like to continue discussion please either contact me [Reinis Vicups](https://www.xing.com/profile/Reinis_Vicups) or [Sibylle Ohm](mailto:sibylle.ohm@anderScore.com)

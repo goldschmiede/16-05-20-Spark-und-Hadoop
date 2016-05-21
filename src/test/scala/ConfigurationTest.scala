@@ -42,13 +42,11 @@ class ConfigurationTest extends FlatSpec with Matchers with GivenWhenThen with B
     val sqlContext = new SQLContext(sparkContext)
 
     And("creating data frame from sql table city")
-    val dataFrame = sqlContext.read
-      .format("jdbc")
-      .option("url", config.getString("sqlUrl"))
-      .option("dbtable", "city")
-      .load()
+    val dataFrame = sqlContext.load("jdbc", Map(
+      "url" -> config.getString("sqlUrl"),
+      "dbtable" -> "city"))
 
     Then("RDD operation should succeed")
-    dataFrame.map(row => row.getAs[String]("name")).count() should be > 0L
+    dataFrame.select("name").count() should be > 0L
   }
 }

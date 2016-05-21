@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+
+<!--
+/**
+ * This file allows access to maprfs. Not sure if this file is required for the hadoop distribution with
+ * default file system (hdfs).
+ */
+-->
+<configuration>
+    <property>
+        <name>fs.defaultFS</name>
+        <!-- <value>path to fs root</value> -->
+        <value>maprfs:///mapr/myroot/</value>
+        <description>see: http://doc.mapr.com/display/MapR12x/Working+with+MapR-FS</description>
+    </property>
+    <property>
+        <name>fs.maprfs.impl</name>
+        <value>com.mapr.fs.MapRFileSystem</value>
+        <description>without this a number of hbase commands such as truncate wouldn't work</description>
+    </property>
+</configuration>
